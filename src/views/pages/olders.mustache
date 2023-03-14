@@ -1,40 +1,44 @@
-{{>partials/header}}
+{{> partials/header}}
+
 <h3>Coloque sua id do pedido</h3>
 <form action="olders" method="get">
     <input type="number" name="id">
     <input type="submit" value="procurar">
 </form>
 
-{{#olders}}
-<p><b>Nome:</b> {{name}}</p>
-<p><b>E-mail:</b>  {{email}}</p>
-<p><b>Phone:</b>  {{phone}}</p>
-<br>
-<h2>Resumo do pedido:</h2>
-<br>
-{{/olders}}
-{{^olders}}
-<h2>Não possui older</h2>
-{{/olders}}
 
-<table border="1">
-    <thead>
-    <tr><strong><td>Produto</td><td>Valor</td><td>Qtde.</td><td>Total</td></strong></tr>
-    </thead>
-{{#test}}
+    {{#olders}}
+        <p><b>Nome:</b> {{name}}</p>
+        <p><b>E-mail:</b> {{email}}</p>
+        <p><b>Phone:</b> {{phone}}</p>
+        <br>
+        <h2>Resumo do pedido:</h2>
+        <br>
+    {{/olders}}
 
-<tr><td>{{name}}</td><td>{{price}}</td><td>{{quantity}}</td><td>{{total}}</td></tr>
-{{/test}}
+    {{^olders}}
+        <h2>Não possui older</h2>
+    {{/olders}}
 
-</table>
-<br>
-{{#test}}
-<h3>Total:</h3>{{totalOlder}}
-{{/test}}
+{{#showTrue}}
+    <table border="1">
+        <thead>
+            <tr><strong><td>Produto</td><td>Valor</td><td>Qtde.</td><td>Total</td></strong></tr>
+        </thead>
+        {{#test.itemReturn}}
+            <tr><td>{{name}}</td><td>{{price}}</td><td>{{quantity}}</td><td>{{total}}</td></tr>
+        {{/test.itemReturn}}
+    </table>
 
+    <br>
 
-{{^test}}
-<h2>Não possui produtos</h2>
-{{/test}}
+    {{#test}}
+        <h3>Total: R$ {{valueAllOlder}}</h3>
+    {{/test}}
 
-{{>partials/footer}}
+    {{^test}}
+        <h2>Não possui produtos</h2>
+    {{/test}}
+{{/showTrue}}
+
+{{> partials/footer}}

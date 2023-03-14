@@ -7,12 +7,15 @@ export const olders = (req: Request, res: Response) => {
     let queryNumber: number = parseInt(query);
 
     if (queryNumber >= 1 && queryNumber <= dataBase.olders.length) {
+        const showTrue = true
+
         let objOlder = dataOlders.getFromID(queryNumber);
         let clientId = objOlder?.customer_id as number;
         let objClient = dataClient.getFromID(clientId);
 
         let arraySend: older[] = objOlder?.products as older[];
         res.render('pages/olders', {
+            showTrue,
             olders: objClient,
             test: dataOlders.getArrayOlders(arraySend)
         })
