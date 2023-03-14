@@ -30,12 +30,33 @@ export const dataOlders = {
         });
     },
     getArrayOlders: (array: older[]) => {
-        let itemReturn: ({ id: number; name: string; price: number; description: string; } | undefined)[] = []
+        let valueAllOlder = 0
+        let itemReturn: showOlder[] = []
         array.forEach(element => {
+            const showOlderObj: showOlder = {
+                name: "",
+                price: 0,
+                quantity: 0,
+                total: 0
+            }
+
+
             let idForEach: number = element.id
             let objProduct = dataProduct.getFromID(idForEach)
 
-            itemReturn.push(objProduct)
+            let itemName: string = dataProduct.getFromID(idForEach)?.name as string
+            let itemPrice: number = dataProduct.getFromID(idForEach)?.price as number;
+            let itemQuantity: number = element.quantity as number;
+            let itemTotal: number = itemPrice * itemQuantity;
+
+            showOlderObj.name = itemName;
+            showOlderObj.price = itemPrice;
+            showOlderObj.quantity = itemQuantity;
+            showOlderObj.total = itemTotal
+
+            valueAllOlder += itemTotal
+
+            itemReturn.push(showOlderObj)
 
         });
 
@@ -67,3 +88,10 @@ type olders = {
     customer_id: number,
     products: older[]
 }
+type showOlder = {
+    name: string,
+    price: number,
+    quantity: number,
+    total: number
+}
+

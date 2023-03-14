@@ -31,3 +31,10 @@ type older = {
     id: number,
     quantity: number
 }
+
+type showOlder = {
+    name: string,
+    price: number,
+    quantity: number,
+    total: number
+}

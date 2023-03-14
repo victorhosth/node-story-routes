@@ -9,20 +9,30 @@
 <p><b>Nome:</b> {{name}}</p>
 <p><b>E-mail:</b>  {{email}}</p>
 <p><b>Phone:</b>  {{phone}}</p>
+<br>
+<h2>Resumo do pedido:</h2>
+<br>
 {{/olders}}
 {{^olders}}
 <h2>Não possui older</h2>
 {{/olders}}
 
-
+<table border="1">
+    <thead>
+    <tr><strong><td>Produto</td><td>Valor</td><td>Qtde.</td><td>Total</td></strong></tr>
+    </thead>
 {{#test}}
-<hr>
-<div style="display:flex; justify-content:space-between">
-<h1> {{name}}</h1><h3> {{price}}</h3>
-</div>
 
-
+<tr><td>{{name}}</td><td>{{price}}</td><td>{{quantity}}</td><td>{{total}}</td></tr>
 {{/test}}
+
+</table>
+<br>
+{{#test}}
+<h3>Total:</h3>{{totalOlder}}
+{{/test}}
+
+
 {{^test}}
 <h2>Não possui produtos</h2>
 {{/test}}
