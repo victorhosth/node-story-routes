@@ -1,0 +1,19 @@
+{{>partials/header}}
+<ul>
+{{#productsShow}}
+<li>
+    <h1>{{name}}</h1><br>
+    <h5>{{price}}</h5><br>
+    <p>{{description}}</p>
+
+        <button style="margin:16px">Adicionar ao carrinho</button>
+</li>
+    <hr>
+
+
+{{/productsShow}}
+{{^productsShow}}
+<h1>Não temos nenhum produto cadastrado</h1>
+{{/productsShow}}
+</ul>
+{{>partials/footer}}

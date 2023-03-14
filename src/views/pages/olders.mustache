@@ -1,0 +1,30 @@
+{{>partials/header}}
+<h3>Coloque sua id do pedido</h3>
+<form action="olders" method="get">
+    <input type="number" name="id">
+    <input type="submit" value="procurar">
+</form>
+
+{{#olders}}
+<p><b>Nome:</b> {{name}}</p>
+<p><b>E-mail:</b>  {{email}}</p>
+<p><b>Phone:</b>  {{phone}}</p>
+{{/olders}}
+{{^olders}}
+<h2>Não possui older</h2>
+{{/olders}}
+
+
+{{#test}}
+<hr>
+<div style="display:flex; justify-content:space-between">
+<h1> {{name}}</h1><h3> {{price}}</h3>
+</div>
+
+
+{{/test}}
+{{^test}}
+<h2>Não possui produtos</h2>
+{{/test}}
+
+{{>partials/footer}}
